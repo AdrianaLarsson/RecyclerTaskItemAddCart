@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.cartshopping);
 
-     
+
      getSupportActionBar().setDisplayShowTitleEnabled(true);
 
         setContentView(R.layout.activity_main);
