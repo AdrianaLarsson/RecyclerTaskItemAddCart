@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 public class ShowItemActivity extends DialogFragment {
 
     private ItemActivity mItemActivity;
+    private RecyclerView recyclerView;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -27,17 +29,22 @@ public class ShowItemActivity extends DialogFragment {
                 inflater.inflate(R.layout.show_item, null);
 
         TextView textViewTitle =
-                (TextView) dialogView.findViewById(R.id.editTextTitle);
+                (TextView) dialogView.findViewById(R.id.textViewTitle);
 
         TextView textViewDescription =
-                (TextView) dialogView.findViewById(R.id.editTextDescription);
+                (TextView) dialogView.findViewById(R.id.textViewDescription);
 
         textViewTitle.setText(mItemActivity.getTitle());
         textViewDescription.setText(mItemActivity.getDescription());
 
+
+
+
         Button btnOK = (Button) dialogView.findViewById(R.id.buttonOK);
 
         builder.setView(dialogView).setMessage("Your Note");
+
+
 
         btnOK.setOnClickListener(new View.OnClickListener() {
             @Override

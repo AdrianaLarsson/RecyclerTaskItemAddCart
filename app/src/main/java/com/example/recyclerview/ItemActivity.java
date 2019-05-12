@@ -1,5 +1,6 @@
 package com.example.recyclerview;
 
+// class för the decription and title, get and set
 public class ItemActivity {
 
     private String mTitle;

@@ -11,6 +11,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Notification notification;
     TextView textCartItemCount;
 
+    private List<ItemActivity> mItemList;
 
     private int value;
 
@@ -34,7 +37,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.cartshopping);
+
+     
+     getSupportActionBar().setDisplayShowTitleEnabled(true);
+
         setContentView(R.layout.activity_main);
+
+
 
 
         recyclerView = (RecyclerView)
@@ -57,9 +68,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         FloatingActionButton floatingActionButtonItem = findViewById(R.id.floatingActionButtonItem);
-
-
-
         textCartItemCount = (TextView) findViewById(R.id.badge_notification_1);
 
 
@@ -69,10 +77,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                value++;
+                value--;
 
 
                 textCartItemCount.setText("" + value);
+
+
+
 
 
             }
@@ -93,7 +104,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void showItem(int adapterPosition) {
        ShowItemActivity dialog = new ShowItemActivity();
+
         dialog.sendNoteSelected(itemActivityList.get(adapterPosition));
+
         dialog.show(getSupportFragmentManager(), "");
 
 
@@ -102,8 +115,6 @@ public class MainActivity extends AppCompatActivity {
     public void createNewNote(ItemActivity itemActivity) {
 
         value++;
-
-
         textCartItemCount.setText("" + value);
 
         itemActivityList.add(itemActivity);
@@ -111,4 +122,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+
+
+
 }

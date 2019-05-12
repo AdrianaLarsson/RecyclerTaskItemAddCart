@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButtonItem"
         android:layout_width="66dp"
@@ -29,6 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:maxImageSize="70dp"
         app:srcCompat="@android:drawable/ic_input_add" />
+
 
     <TextView
         android:id="@+id/badge_notification_1"

@@ -14,8 +14,11 @@ import static com.example.recyclerview.ItemActivity.*;
 public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivity.ListItemHolder> {
 
 
+
+    private RecyclerView recyclerView;
+
     public ItemAdapterActivity(MainActivity mainActivity,
-                       List<ItemActivity> itemlist) {
+                               List<ItemActivity> itemlist) {
 
         mMainActivity = mainActivity;
         mItemList = itemlist;
@@ -23,6 +26,7 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
 
     private List<ItemActivity> mItemList;
     private MainActivity mMainActivity;
+
 
 
        @NonNull
@@ -48,6 +52,10 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
 
            listItemHolder.mTitle.setText(itemActivity.getTitle());
 
+
+
+
+
            if(itemActivity.getDescription().length() > 15) {
 
                listItemHolder.mDescription.setText(itemActivity.getDescription()
@@ -56,10 +64,17 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
            else{
                listItemHolder.mDescription.setText(itemActivity.getDescription()
                        .substring(0, itemActivity.getDescription().length() /2 ));
+
+
+
            }
+
+
+
        
        }
 
+       //get the item size in the recyclerview
        @Override
        public int getItemCount() {
            return mItemList.size();
@@ -71,7 +86,7 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
            TextView mDescription;
 
 
-           public ListItemHolder(@NonNull View itemView) {
+           public ListItemHolder(View itemView) {
 
                super(itemView);
 
@@ -81,17 +96,34 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
                mDescription = (TextView)
                        itemView.findViewById(R.id.textViewDescription);
 
+               recyclerView = (RecyclerView) itemView.findViewById(R.id.recyclerView);
+
+
                itemView.setClickable(true);
 
                itemView.setOnClickListener(this);
 
 
+
+
+
            }
 
+
+//show item when clicks on the item
            @Override
            public void onClick(View v) {
 
                mMainActivity.showItem(getAdapterPosition());
+
+
+
+
            }
+
+
+
+
+
        }
    }
