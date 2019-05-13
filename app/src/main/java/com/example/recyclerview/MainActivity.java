@@ -94,15 +94,12 @@ public class MainActivity extends AppCompatActivity {
 
         mAdapter.notifyDataSetChanged();
 
-
         floatingActionButtonItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                value--;
-                textCartItemCount.setText("" + value);
-
+                itemActivityList.remove(0);
+                textCartItemCount.setText("" + itemActivityList.size());
+                mAdapter.notifyDataSetChanged();
             }
         });
 
@@ -138,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this,  "position " + adapterPosition + "Existing item added to cart "  ,Toast.LENGTH_SHORT).show();
 
 
-
         mAdapter.notifyDataSetChanged();
 
     }
@@ -155,10 +151,8 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, "New item added to cart" ,Toast.LENGTH_SHORT).show();
 
         itemActivityList.add(itemActivity);
+
         mAdapter.notifyDataSetChanged();
-
-
-
 
     }
 
