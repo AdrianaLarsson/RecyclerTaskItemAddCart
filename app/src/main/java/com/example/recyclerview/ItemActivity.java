@@ -58,7 +58,7 @@ public class ItemActivity {
         jsonObject.put(JSON_TITLE, mTitle);
         jsonObject.put(JSON_DESCRIPTION, mDescription);
         jsonObject.put(JSON_COUNTITEM, mCountItem);
-        
+
 
         return  jsonObject;
     }

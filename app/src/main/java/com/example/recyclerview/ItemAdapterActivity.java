@@ -2,11 +2,13 @@ package com.example.recyclerview;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.BitSet;
 import java.util.List;
 
 import static com.example.recyclerview.ItemActivity.*;
@@ -77,7 +79,16 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
        //get the item size in the recyclerview
        @Override
        public int getItemCount() {
+
+
+
+
            return mItemList.size();
+
+                   //Log.i("info", "Itemlist!!!" + mItemList.size() );
+
+                   //mItemList.size();
+
        }
 
        public class ListItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -86,6 +97,7 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
            TextView mDescription;
            TextView mCountItem;
 
+           private int value = 0;
 
            public ListItemHolder(View itemView) {
 
@@ -100,6 +112,7 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
                mCountItem = (TextView) itemView.findViewById(R.id.badge_notification_1);
 
                recyclerView = (RecyclerView) itemView.findViewById(R.id.recyclerView);
+
 
 
                itemView.setClickable(true);
@@ -122,11 +135,13 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
 
 
 
+
+
            }
 
 
 
-
-
        }
+
+
    }

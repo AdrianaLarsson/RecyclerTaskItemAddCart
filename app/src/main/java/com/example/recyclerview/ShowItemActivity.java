@@ -14,6 +14,8 @@ public class ShowItemActivity extends DialogFragment {
 
     private ItemActivity mItemActivity;
     private RecyclerView recyclerView;
+    private int value = 0;
+    private ItemAdapterActivity mAdapter;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class ShowItemActivity extends DialogFragment {
         textViewDescription.setText(mItemActivity.getDescription());
 
 
+        final TextView textViewCount = (TextView) dialogView.findViewById(R.id.badge_notification_1);
 
 
         Button btnOK = (Button) dialogView.findViewById(R.id.buttonOK);
@@ -49,8 +52,12 @@ public class ShowItemActivity extends DialogFragment {
         btnOK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 dismiss();
-            }
+
+
+        }
         });
 
         return builder.create();

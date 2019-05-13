@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<ItemActivity> mItemList;
 
-    private int value;
+    private int value = 0;
 
    // private List<ItemActivity> itemActivityList = new ArrayList<>();
     private List<ItemActivity> itemActivityList;
@@ -51,8 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             itemActivityList = mSeriallizer.load();
+
         } catch (Exception e) {
             itemActivityList = new ArrayList<ItemActivity>();
+
+
             Log.i("Error loading notes: ", "", e);
 
         }
@@ -78,8 +81,18 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
         FloatingActionButton floatingActionButtonItem = findViewById(R.id.floatingActionButtonItem);
+
         textCartItemCount = (TextView) findViewById(R.id.badge_notification_1);
 
+        value = itemActivityList.size();
+
+       // value++;
+        textCartItemCount.setText("ITEM!!" + itemActivityList.size());
+
+        textCartItemCount.setText("" + value );
+        //Toast.makeText(this, "New item added to cart" ,Toast.LENGTH_SHORT).show();
+
+        mAdapter.notifyDataSetChanged();
 
 
         floatingActionButtonItem.setOnClickListener(new View.OnClickListener() {
@@ -94,11 +107,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton);
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NewItemActivity dialog = new NewItemActivity();
                 dialog.show(getSupportFragmentManager(), "");
+
 
 
             }
@@ -107,22 +122,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showItem(int adapterPosition) {
+
        ShowItemActivity dialog = new ShowItemActivity();
 
         dialog.sendNoteSelected(itemActivityList.get(adapterPosition));
 
         dialog.show(getSupportFragmentManager(), "");
 
+        value = itemActivityList.size();
+
+       value++;
+        textCartItemCount.setText("ITEM!!" + itemActivityList.size());
+        //value++;
+       textCartItemCount.setText("" + value);
+        Toast.makeText(this,  "position " + adapterPosition + "Existing item added to cart "  ,Toast.LENGTH_SHORT).show();
+
+
+
+        mAdapter.notifyDataSetChanged();
 
     }
 
-    public void createNewNote(ItemActivity itemActivity) {
+    public void newItem(ItemActivity itemActivity) {
+
+       value = itemActivityList.size();
 
         value++;
-        textCartItemCount.setText("" + value);
+        textCartItemCount.setText("ITEM!!" + itemActivityList.size());
+
+        textCartItemCount.setText("" + value );
+
+        Toast.makeText(this, "New item added to cart" ,Toast.LENGTH_SHORT).show();
 
         itemActivityList.add(itemActivity);
         mAdapter.notifyDataSetChanged();
+
+
 
 
     }
@@ -131,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
     public void saveItems(){
         try{
            mSeriallizer.save(itemActivityList);
+
 
         }catch(Exception e){
             Log.e("Error Saving Notes","", e);
@@ -143,14 +179,21 @@ public class MainActivity extends AppCompatActivity {
 
         saveItems();
 
-        value--;
-
-
-        textCartItemCount.setText("" + value);
-
-
-
     }
 
+    /*public int getItemCount() {
+
+
+        int value = 0;
+
+        value = mItemList.size();
+
+        textCartItemCount.setText( "" + value);
+        return value;
+
+        //mItemList.size();
+
+    }
+*/
 
 }

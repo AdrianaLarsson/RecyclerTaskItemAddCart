@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class NewItemActivity extends DialogFragment {
 
@@ -28,6 +29,8 @@ public class NewItemActivity extends DialogFragment {
 
         final EditText editTitle = (EditText) dialogView.findViewById(R.id.editTextTitle);
         final EditText editDescription = (EditText) dialogView.findViewById(R.id.editTextDescription);
+        final TextView countItem = (TextView) dialogView.findViewById(R.id.badge_notification_1);
+
 
         Button buttonOK = (Button) dialogView.findViewById(R.id.buttonOK);
         builder.setView(dialogView).setMessage("Add a new note");
@@ -49,19 +52,22 @@ public class NewItemActivity extends DialogFragment {
                 // Create a new note
                 ItemActivity itemActivity = new ItemActivity();
 
-                // Set its variables to match the
-                // user's entries on the form
+
                 itemActivity.setTitle(editTitle.
                         getText().toString());
 
                 itemActivity.setDescription(editDescription.
                         getText().toString());
 
+
+
+
                 MainActivity callingActivity = (
                         MainActivity) getActivity();
 
-                // Pass newNote back to MainActivity
-                callingActivity.createNewNote(itemActivity);
+
+                // Pass newItem back to MainActivity
+                callingActivity.newItem(itemActivity);
 
                 // Quit the dialog
                 dismiss();
