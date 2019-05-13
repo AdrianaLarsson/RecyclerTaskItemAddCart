@@ -84,6 +84,7 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
 
            TextView mTitle;
            TextView mDescription;
+           TextView mCountItem;
 
 
            public ListItemHolder(View itemView) {
@@ -95,6 +96,8 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
 
                mDescription = (TextView)
                        itemView.findViewById(R.id.textViewDescription);
+
+               mCountItem = (TextView) itemView.findViewById(R.id.badge_notification_1);
 
                recyclerView = (RecyclerView) itemView.findViewById(R.id.recyclerView);
 

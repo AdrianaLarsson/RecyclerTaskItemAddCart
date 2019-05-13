@@ -9,6 +9,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,10 +28,12 @@ public class MainActivity extends AppCompatActivity {
 
     private int value;
 
-    private List<ItemActivity> itemActivityList = new ArrayList<>();
+   // private List<ItemActivity> itemActivityList = new ArrayList<>();
+    private List<ItemActivity> itemActivityList;
     private RecyclerView recyclerView;
     private ItemAdapterActivity mAdapter;
 
+    private JSONSeriallizer mSeriallizer;
 
 
 
@@ -43,6 +46,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+       mSeriallizer = new JSONSeriallizer("RecyclerView.json",
+                getApplicationContext());
+
+        try {
+            itemActivityList = mSeriallizer.load();
+        } catch (Exception e) {
+            itemActivityList = new ArrayList<ItemActivity>();
+            Log.i("Error loading notes: ", "", e);
+
+        }
 
 
         recyclerView = (RecyclerView)
@@ -75,13 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 value--;
-
-
                 textCartItemCount.setText("" + value);
-
-
-
-
 
             }
         });
@@ -121,7 +128,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void saveItems(){
+        try{
+           mSeriallizer.save(itemActivityList);
 
+        }catch(Exception e){
+            Log.e("Error Saving Notes","", e);
+        }
+
+
+    }
+    protected void onPause(){
+        super.onPause();
+
+        saveItems();
+
+        value--;
+
+
+        textCartItemCount.setText("" + value);
+
+
+
+    }
 
 
 }
