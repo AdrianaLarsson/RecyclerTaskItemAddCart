@@ -19,6 +19,8 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
 
     private RecyclerView recyclerView;
 
+    //Itemadapter constuct, pass in prameter maincticity an lit itemactivity
+
     public ItemAdapterActivity(MainActivity mainActivity,
                                List<ItemActivity> itemlist) {
 
@@ -31,6 +33,8 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
 
 
 
+    //this method needs because to show listobject with inflater and layout by referens it with id
+    // Layout inflater expands layout by filling it with views
        @NonNull
        @Override
        public ItemAdapterActivity.ListItemHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -42,23 +46,21 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
            return new ListItemHolder(view);
 
 
-
-
-
        }
+
+       //updates the contents on items view and display the data at the specified position
 
        @Override
        public void onBindViewHolder(@NonNull ItemAdapterActivity.ListItemHolder listItemHolder, int position) {
 
+           //gets the position
            ItemActivity itemActivity = mItemList.get(position);
 
+           //gets the title and the text
            listItemHolder.mTitle.setText(itemActivity.getTitle());
 
 
-
-
-
-           if(itemActivity.getDescription().length() > 15) {
+           /* if(itemActivity.getDescription().length() > 70) {
 
                listItemHolder.mDescription.setText(itemActivity.getDescription()
                        .substring(0, 15));
@@ -67,21 +69,19 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
                listItemHolder.mDescription.setText(itemActivity.getDescription()
                        .substring(0, itemActivity.getDescription().length() /2 ));
 
-
-
            }
 
+           */
 
 
-       
+           listItemHolder.mDescription.setText(itemActivity.getDescription()
+                   .substring(0, itemActivity.getDescription().length() /2 ));
+
        }
 
-       //get the item size in the recyclerview
+       //returns the item size/number of the array of items
        @Override
        public int getItemCount() {
-
-
-
 
            return mItemList.size();
 
@@ -91,6 +91,7 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
 
        }
 
+       //inner class extends recyclerview.viewholder and implements on clicklistener, becuse onclicklistener it uses by so the user can cliks on teh etxt
        public class ListItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
            TextView mTitle;
@@ -121,20 +122,14 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
 
 
 
-
-
            }
 
 
-//show item when clicks on the item
+          //show item when clicks on the iteem and gets the adapterposition
            @Override
            public void onClick(View v) {
 
                mMainActivity.showItem(getAdapterPosition());
-
-
-
-
 
 
            }

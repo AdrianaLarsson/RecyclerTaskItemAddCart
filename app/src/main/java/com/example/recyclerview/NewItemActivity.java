@@ -14,6 +14,7 @@ public class NewItemActivity extends DialogFragment {
 
     ItemActivity mItemActivity = new ItemActivity();
 
+    //creates a dialog so the user can write title an description
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -37,10 +38,11 @@ public class NewItemActivity extends DialogFragment {
 
 
 
-        // Handle the cancel button
+        // handle the cancel button
         buttonOK.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Quit the dialog
                 dismiss();
             }
         });
@@ -69,7 +71,7 @@ public class NewItemActivity extends DialogFragment {
                 // Pass newItem back to MainActivity
                 callingActivity.newItem(itemActivity);
 
-                // Quit the dialog
+                // quits the dialog
                 dismiss();
 
             }
@@ -81,7 +83,6 @@ public class NewItemActivity extends DialogFragment {
 
 
     public void createNewNote(ItemActivity itemActivity){
-        // Temporary code
         mItemActivity = itemActivity;
     }
 }

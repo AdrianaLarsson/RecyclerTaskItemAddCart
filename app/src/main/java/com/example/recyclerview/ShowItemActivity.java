@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+//A fragment that displays a dialog window
 public class ShowItemActivity extends DialogFragment {
 
     private ItemActivity mItemActivity;
@@ -17,6 +18,7 @@ public class ShowItemActivity extends DialogFragment {
     private int value = 0;
     private ItemAdapterActivity mAdapter;
 
+  //  This is  used to show an Alert Dialog. When the user clicks on item it show i alert, what kind of informtuon who pots in decription and title
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -54,6 +56,7 @@ public class ShowItemActivity extends DialogFragment {
             public void onClick(View v) {
 
 
+                // quits the dialog
                 dismiss();
 
 

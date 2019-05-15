@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private int value = 0;
 
    // private List<ItemActivity> itemActivityList = new ArrayList<>();
+
     private List<ItemActivity> itemActivityList;
     private RecyclerView recyclerView;
     private ItemAdapterActivity mAdapter;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             itemActivityList = new ArrayList<ItemActivity>();
 
 
-            Log.i("Error loading notes: ", "", e);
+            Log.i("Error loading items: ", "", e);
 
         }
 
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        // Add a neat dividing line between items in the list
+        // adds a neat dividing line between items in the list
         recyclerView.addItemDecoration(
                 new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         floatingActionButtonItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // itemActivityList.remove(0);
+
                itemActivityList.remove(0);
 
 
@@ -117,12 +118,12 @@ public class MainActivity extends AppCompatActivity {
                 dialog.show(getSupportFragmentManager(), "");
 
 
-
             }
         });
 
     }
 
+    //show the item in teh alert dialog
     public void showItem(int adapterPosition) {
 
 
@@ -142,11 +143,12 @@ public class MainActivity extends AppCompatActivity {
 
         dialog.show(getSupportFragmentManager(), "");
 
-
+//updates adapter
         mAdapter.notifyDataSetChanged();
 
     }
 
+    //creates new item and conuts item
     public void newItem(ItemActivity itemActivity) {
 
        value = itemActivityList.size();
@@ -164,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+//saves item
     public void saveItems(){
         try{
 

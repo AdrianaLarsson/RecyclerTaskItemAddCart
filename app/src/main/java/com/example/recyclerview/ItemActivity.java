@@ -3,7 +3,7 @@ package com.example.recyclerview;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-// class för the decription and title, get and set
+// class for the decription and title, get and set
 public class ItemActivity {
 
     private String mTitle;

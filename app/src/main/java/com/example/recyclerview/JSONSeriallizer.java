@@ -19,28 +19,30 @@ import java.util.List;
 
 public class JSONSeriallizer {
 
+    // filename where the data will be saved
     private String mFileName;
+    //for writing data to a file.
     private Context mContext;
 
-
+     //json contructor
     public JSONSeriallizer(String fn, Context context){
 
 
         mFileName = fn;
         mContext = context;
-
-
-
     }
 
 
     public void save(List<ItemActivity> itemActivity) throws IOException, JSONException{
 
+        //makes an arraylist of json. ArrayList for handling JSON objects.
         JSONArray jsonArray = new JSONArray();
 
+        //for loop to go through all the items objects in item and convert them to JSON objects using the convertToJSON method from the ItemAcitvity class
         for (ItemActivity itemActivity1 : itemActivity)
         jsonArray.put(itemActivity1.convertToJSON());
 
+        //write the data to an a file
         Writer writer = null;
         try {
             OutputStream outputStream = mContext.openFileOutput(mFileName, mContext.MODE_PRIVATE);
@@ -53,6 +55,8 @@ public class JSONSeriallizer {
         }
 
     }
+
+    //opens and load and reads the data from file, takes the lenght of array
 
     public ArrayList<ItemActivity> load() throws  IOException, JSONException{
 
