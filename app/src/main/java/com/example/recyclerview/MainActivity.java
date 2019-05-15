@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+       
+
        mSeriallizer = new JSONSeriallizer("RecyclerView.json",
                 getApplicationContext());
 
@@ -97,7 +99,10 @@ public class MainActivity extends AppCompatActivity {
         floatingActionButtonItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                itemActivityList.remove(0);
+               // itemActivityList.remove(0);
+               itemActivityList.remove(0);
+
+
                 textCartItemCount.setText("" + itemActivityList.size());
                 mAdapter.notifyDataSetChanged();
             }
@@ -120,19 +125,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void showItem(int adapterPosition) {
 
-       ShowItemActivity dialog = new ShowItemActivity();
+
+       /* value = itemActivityList.size();
+
+        value++;
+        textCartItemCount.setText("ITEM!!" + itemActivityList.size());
+        //value++;
+        textCartItemCount.setText("" + value);
+        Toast.makeText(this,  "position " + adapterPosition + "Existing item added to cart "  ,Toast.LENGTH_SHORT).show();
+
+        g*/
+
+        ShowItemActivity dialog = new ShowItemActivity();
 
         dialog.sendNoteSelected(itemActivityList.get(adapterPosition));
 
         dialog.show(getSupportFragmentManager(), "");
-
-        value = itemActivityList.size();
-
-       value++;
-        textCartItemCount.setText("ITEM!!" + itemActivityList.size());
-        //value++;
-       textCartItemCount.setText("" + value);
-        Toast.makeText(this,  "position " + adapterPosition + "Existing item added to cart "  ,Toast.LENGTH_SHORT).show();
 
 
         mAdapter.notifyDataSetChanged();
@@ -159,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void saveItems(){
         try{
+
            mSeriallizer.save(itemActivityList);
 
 
@@ -189,5 +198,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 */
+
 
 }
