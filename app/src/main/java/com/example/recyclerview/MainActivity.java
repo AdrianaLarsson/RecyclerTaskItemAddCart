@@ -47,9 +47,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-       
 
-       mSeriallizer = new JSONSeriallizer("RecyclerView.json",
+
+        //picks upp the methods and class from json so it saves
+
+        mSeriallizer = new JSONSeriallizer("RecyclerView.json",
                 getApplicationContext());
 
         try {
@@ -179,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    //it saves when the app is on pause
     protected void onPause(){
         super.onPause();
 
