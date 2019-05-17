@@ -83,6 +83,8 @@ public class NewItemActivity extends DialogFragment {
 
 
     public void createNewNote(ItemActivity itemActivity){
+
+
         mItemActivity = itemActivity;
     }
 }

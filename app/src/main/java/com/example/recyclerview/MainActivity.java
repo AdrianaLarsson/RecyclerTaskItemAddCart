@@ -103,11 +103,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               itemActivityList.remove(0);
+                // method isempty if this list contains no elements.
+                if (!itemActivityList.isEmpty()) {
+                    itemActivityList.remove(0);
+
+                    textCartItemCount.setText("" + itemActivityList.size());
 
 
-                textCartItemCount.setText("" + itemActivityList.size());
-                mAdapter.notifyDataSetChanged();
+                    mAdapter.notifyDataSetChanged();
+                    Toast.makeText(MainActivity.this, "You removed an item of your list", Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "List is already empty", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 

@@ -125,7 +125,7 @@ public class ItemAdapterActivity extends RecyclerView.Adapter<ItemAdapterActivit
            }
 
 
-          //show item when clicks on the iteem and gets the adapterposition
+          //show item when clicks on the item and gets the adapterposition
            @Override
            public void onClick(View v) {
 
